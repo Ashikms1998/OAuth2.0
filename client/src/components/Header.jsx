@@ -38,7 +38,7 @@ export default function Header() {
         <Link to="/sign-in">
           <Button
             color="purple"
-            className="bg-gradient-to-r from-purple-500 via-indigo-500 to-blue-500 text-white hover:opacity-90 transition-all"
+            className="bg-gradient-to-r from-purple-500 via-indigo-500 to-blue-500 text-white"
           >
             Sign In
           </Button>
@@ -46,16 +46,16 @@ export default function Header() {
         </Link>
       </div>
       <NavbarCollapse>
-        <NavbarLink active={path === "/about"} as={'div'}>
+        <NavbarLink active={path === "/about"} as={"div"}>
           <Link to="/about">About</Link>
         </NavbarLink>
-        <NavbarLink active={path === "/"} as={'div'}>
+        <NavbarLink active={path === "/"} as={"div"}>
           <Link to="/">Home</Link>
         </NavbarLink>
-        <NavbarLink active={path === "/sign-in"} as={'div'}>
+        <NavbarLink active={path === "/sign-in"} as={"div"}>
           <Link to="/sign-in">Sign In</Link>
         </NavbarLink>
-        <NavbarLink active={path === "/sign-up"} as={'div'}>
+        <NavbarLink active={path === "/sign-up"} as={"div"}>
           <Link to="/sign-up">Sign Up</Link>
         </NavbarLink>
       </NavbarCollapse>
