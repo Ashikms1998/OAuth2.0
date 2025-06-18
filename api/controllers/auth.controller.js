@@ -1,7 +1,8 @@
 import bcrypt from "bcrypt";
-import User from "../models/User.js";
+import User from "../models/user.model.js";
+import { errorHandler } from "../utils/error.js";
 
-export const signup = async (req, res) => {
+export const signup = async (req, res,next) => {
   const { username, email, password } = req.body;
 
   if (
@@ -12,27 +13,18 @@ export const signup = async (req, res) => {
     email.trim() === "" ||
     password.trim() === ""
   ) {
-    return res
-      .status(400)
-      .json({ success: false, message: "All fields are required." });
+    next(errorHandler(400,"All fields are required." ))
   }
 
   try {
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res
-        .status(409)
-        .json({
-          success: false,
-          message: "User with this email already exists.",
-        });
+        next(errorHandler(409,"User with this email already exists." ))
     }
 
     const existingUsername = await User.findOne({ username });
     if (existingUsername) {
-      return res
-        .status(409)
-        .json({ success: false, message: "Username is already taken." });
+            next(errorHandler(409,"Username is already taken." ))
     }
 
     const saltRounds = 10;
@@ -51,14 +43,6 @@ export const signup = async (req, res) => {
       .json({ success: true, message: "User registered successfully!" });
   } catch (error) {
     console.error("Signup error:", error);
-
-
-    return res
-      .status(500)
-      .json({
-        success: false,
-        message:
-          "An error occurred during registration. Please try again later.",
-      });
+    next(error)
   }
 };
