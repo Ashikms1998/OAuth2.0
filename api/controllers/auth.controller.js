@@ -45,7 +45,7 @@ export const signup = async (req, res, next) => {
   } catch (error) {
     console.error("Signup error:", error);
     next(error);
-  }
+  } 
 };
 
 export const signin = async (req, res, next) => {
