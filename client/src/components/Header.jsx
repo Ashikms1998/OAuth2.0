@@ -21,16 +21,21 @@ export default function Header() {
         className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white"
       >
         <span className="px-2 py-1 bg-gradient-to-r from-indigo-800 via-purple-500 to-pink-500 rounded-lg text-white">
-          Ashik's Blog
+          Ashik's
         </span>
+        Blog
       </Link>
       <form>
         <TextInput
           type="text"
           placeholder="Search..."
           rightIcon={AiOutlineSearch}
+          className="hidden lg:inline"
         />
       </form>
+      <Button className="w-12 h-10 lg:hidden" color='grey' pill>
+        <AiOutlineSearch/>
+      </Button>
       <div className="flex gap-2 md:order-2">
         <Button className="w-22 h-10 hidden sm:inline" color="gray" pill>
           <FaMoon className="fill-black" />
@@ -42,7 +47,7 @@ export default function Header() {
           >
             Sign In
           </Button>
-          <NavbarToggle color="gray" />
+          <NavbarToggle />
         </Link>
       </div>
       <NavbarCollapse>
